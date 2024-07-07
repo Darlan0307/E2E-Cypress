@@ -117,7 +117,7 @@ describe("Funcionalidade: Registro de Imagem", () => {
       cy.get("#card-list .card-img").should((elements) => {
         const lastElement = elements[elements.length - 1];
         const src = lastElement.getAttribute("src");
-        assert.strictEqual(src, input.url);
+        assert.strictEqual(src, input.imageUrl);
       });
     });
     it("E o novo item deve ser armazenado no localStorage", () => {
