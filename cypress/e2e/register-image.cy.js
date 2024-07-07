@@ -22,7 +22,8 @@ class RegisterImage {
 
 const registerImage = new RegisterImage();
 const colors = {
-  errors: "rgb(220, 53, 69)",
+  // errors: "rgb(220, 53, 69)",
+  errors: "rgb(220, 53, 00)",
   success: "",
 };
 
