@@ -126,9 +126,42 @@ describe("Funcionalidade: Registro de Imagem", () => {
       expect(items).to.have.property("title", input.title);
       expect(items).to.have.property("imageUrl", input.imageUrl);
     });
-    it("Então os campos de entrada devem ser limpos", () => {
+    it("Então os campos de entrada devem ser limpas", () => {
       registerImage.elements.title().should("be.empty");
       registerImage.elements.imageUrl().should("be.empty");
+    });
+  });
+
+  describe("Atualizando a página após enviar uma imagem clicando no botão de enviar", () => {
+    after(() => {
+      cy.clearAllLocalStorage();
+    });
+
+    const input = {
+      title: "BR Alien",
+      imageUrl:
+        "https://cdn.mos.cms.futurecdn.net/eM9EvWyDxXcnQTTyH8c8p5-1200-80.jpg",
+    };
+
+    it("Dado que estou na página de registro de imagem", () => {
+      cy.visit("/");
+    });
+
+    it("Então eu enviei uma imagem clicando no botão de enviar", () => {
+      registerImage.typeTitle(input.title);
+      registerImage.typeImageUrl(input.imageUrl);
+      registerImage.clickBtnSubmit();
+      cy.wait(100);
+    });
+    it("Quando eu atualizo a página", () => {
+      cy.reload();
+    });
+    it("Então eu ainda devo ver a imagem enviada na lista de imagens registradas", () => {
+      cy.get("#card-list .card-img").should((elements) => {
+        const lastElement = elements[elements.length - 1];
+        const src = lastElement.getAttribute("src");
+        assert.strictEqual(src, input.imageUrl);
+      });
     });
   });
 });

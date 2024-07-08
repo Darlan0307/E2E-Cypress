@@ -1,5 +1,5 @@
 Funcionalidade: Registro de Imagem
-
+̣̣
 Cenário: Enviando uma imagem com entradas inválidas
 Dado que estou na página de registro de imagem
 Quando eu insiro "" no campo de título
@@ -20,14 +20,6 @@ E a lista de imagens registradas deve ser atualizada com o novo item
 E o novo item deve ser armazenado no localStorage
 Então os campos de entrada devem ser limpos
 
-Cenário: Enviando uma imagem e atualizando a lista
-Dado que estou na página de registro de imagem
-Então eu inseri "BR Alien" no campo de título
-Então eu inseri "https://cdn.mos.cms.futurecdn.net/eM9EvWyDxXcnQTTyH8c8p5-1200-80.jpg" no campo de URL
-Quando eu clico no botão de enviar
-E a lista de imagens registradas deve ser atualizada com o novo item
-E o novo item deve ser armazenado no localStorage
-Então os campos de entrada devem ser limpos
 
 Cenário: Atualizando a página após enviar uma imagem clicando no botão de enviar
 Dado que estou na página de registro de imagem
